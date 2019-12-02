@@ -1,0 +1,28 @@
+host k8s.master {
+	hardware ethernet 00:0C:29:A5:DD:BF;
+	fixed-address 192.168.80.110;
+}
+host k8s.node01 {
+	hardware ethernet 00:0C:29:36:6F:8B;
+	fixed-address 192.168.80.120;
+}
+host k8s.node02 {
+	hardware ethernet 00:0C:29:50:90:02;
+	fixed-address 192.168.80.121;
+}
+
+
+
+kubeadm init --config=kubeadm.yml --upload-certs | tee kubeadm-init.log
+
+令牌会过期，oauth2，屏幕一清就不见了
+
+sha256:9e6a1d0f03163f8887cc1adbdff9fbf2f26e16ebb846e6173aa380e9eac4b381
+
+
+sudo kubeadm init --pod-network-cidr=10.224.0.0/16
+
+
+ kubeadm join 192.168.80.110:6443 --token abcdef.0123456789abcdef \
+ --discovery-token-ca-cert-hash sha256:d11f8d4593512af72ba9f8fcb33208f5c25097f7f789d3e586de89862f585540
+
